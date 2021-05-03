@@ -16,7 +16,12 @@ class Data(Resource):
         return "not set"
 
     def get(self):
-        with open("vars_log.txt") as file:
-            return file.read()
+        try:
+            with open("vars_log.txt") as file:
+                v = file.read()
+            if v: return v
+            else: return 0
+        except:
+            return 0
 
        
