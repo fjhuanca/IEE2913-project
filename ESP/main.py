@@ -15,36 +15,37 @@ def do_connect(ssid, password):
     print('network config:', wlan.ifconfig())
 
 
-#do_connect("wifi_ssid", "clave_wifi")
+# url = 'iee2913-project.herokuapp.com'
+# import socket
+# def http_get(url):
+#     host, path = url.split('/', 1)
+#     s = socket.socket()
+#     s.connect((host, 80))
+#     # request=bytes('GET /%s HTTP/1.1\r\nHost: %s\r\n\r\n' % (path, host), 'utf8')	
+#     print("Requesting /%s from host %s\n" % (path, host))
+#     # s.send(request)
+#     s.send(b'GET /messages?id1=2021 HTTP/1.0\r\n\r\n')    
+#     dump_socket(s)    
+# # print(socket.getaddrinfo(url, 80))
 
-url = 'iee2913-project.herokuapp.com'
-import socket
-def http_get(url):
-    host, path = url.split('/', 1)
-    s = socket.socket()
-    s.connect((host, 80))
-    # request=bytes('GET /%s HTTP/1.1\r\nHost: %s\r\n\r\n' % (path, host), 'utf8')	
-    print("Requesting /%s from host %s\n" % (path, host))
-    # s.send(request)
-    s.send(b'GET /messages?id1=2021 HTTP/1.0\r\n\r\n')    
-    dump_socket(s)    
-# print(socket.getaddrinfo(url, 80))
-
-def dump_socket(s):
-    try:
-        while True:
-            data = s.recv(100)
-            if data:
-                print(str(data, 'utf8'), end='')
-            else:
-                print('')  # end with newline
-                s.close()
-                break
-    except:
-        s.close()
-        raise
+# def dump_socket(s):
+#     try:
+#         while True:
+#             data = s.recv(100)
+#             if data:
+#                 print(str(data, 'utf8'), end='')
+#             else:
+#                 print('')  # end with newline
+#                 s.close()
+#                 break
+#     except:
+#         s.close()
+#         raise
 
 # print(http_get(url+"/"))
+
+
+do_connect("wifi_ssid", "clave_wifi")
 
 adc_temp = ADC(Pin(35, Pin.IN))
 adc_temp.atten(ADC.ATTN_11DB)
