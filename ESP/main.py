@@ -79,4 +79,4 @@ while True:
         print("net error")
     # print(temp)
     # print(bs)
-    time.sleep_ms(25)
+    utime.sleep_ms(25)

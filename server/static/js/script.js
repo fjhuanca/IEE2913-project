@@ -1,5 +1,5 @@
 function realTimeLineChart() {
-    var margin = {top: 20, right: 20, bottom: 20, left: 20},
+    var margin = {top: 40, right: 40, bottom: 40, left: 40},
         width = 600,
         height = 400,
         duration = 500,
