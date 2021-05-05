@@ -2,7 +2,7 @@ from machine import ADC, Pin
 import time
 f1 = Pin(32, Pin.IN)
 f2 = Pin(33, Pin.IN)
-adc = ADC(Pin(34, Pin.IN, Pin.PULLUP))          # create ADC object on ADC pin
+adc = ADC(Pin(34, Pin.IN))          # create ADC object on ADC pin
 # adc.read()                  # read value, 0-4095 across voltage range 0.0v - 1.0v
 
 adc.atten(ADC.ATTN_11DB)    # set 11dB input attenuation (voltage range roughly 0.0v - 3.6v)

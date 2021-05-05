@@ -14,7 +14,8 @@ def do_connect(ssid, password):
             pass
     print('network config:', wlan.ifconfig())
 
-do_connect("wifi_ssid", "clave_wifi")
+
+#do_connect("wifi_ssid", "clave_wifi")
 
 url = 'iee2913-project.herokuapp.com'
 import socket
@@ -45,19 +46,30 @@ def dump_socket(s):
 
 # print(http_get(url+"/"))
 
-adc_temp = ADC(Pin(36, Pin.IN))
+adc_temp = ADC(Pin(35, Pin.IN))
 adc_temp.atten(ADC.ATTN_11DB)
 adc_temp.width(ADC.WIDTH_12BIT)
+
+adc_bs = ADC(Pin(34, Pin.IN))
+adc_bs.atten(ADC.ATTN_11DB)
+adc_bs.width(ADC.WIDTH_12BIT)
+
+adc_mic = ADC(Pin(36, Pin.IN))
+adc_mic.atten(ADC.ATTN_11DB)
+adc_mic.width(ADC.WIDTH_12BIT)
+
 url = "http://iee2913-project.herokuapp.com/data"
 headers = {'X-AIO-Key': 'xxxxxxxxxxxxxxxxxxx',
            'Content-Type': 'application/json'}
 
 while True:
-    v = adc_temp.read() / 4096 * 3600 / 10
+    temp = adc_temp.read() / 4096 * 3600 / 10
+    bs = adc_bs.read()
+    mic = adc_mic.read()
     try:
-        data = json.dumps({"temp": v,
-                           "mic": v,       
-                           "bs": v})
+        data = json.dumps({"temp": temp,
+                           "mic": mic,       
+                           "bs": bs})
         response = urequests.post(url=url,
                                   headers=headers,
                                   data=data)
@@ -65,5 +77,6 @@ while True:
         response.close()
     except:
         print("net error")
-    # print(v)
-    time.sleep_ms(250)
+    # print(temp)
+    # print(bs)
+    time.sleep_ms(25)
