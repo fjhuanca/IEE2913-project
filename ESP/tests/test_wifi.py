@@ -9,7 +9,7 @@ def do_connect(ssid, password):
             pass
     print('network config:', wlan.ifconfig())
 
-do_connect("nombre_wifi", "contraseña_wifi")
+do_connect("JJP4041", "tipacerdo2019")
 
     
 

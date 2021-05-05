@@ -1,6 +1,6 @@
 from flask_restful import Resource
 from flask import request, Response
-
+import json
 
 class Data(Resource):
   
@@ -9,18 +9,17 @@ class Data(Resource):
         global temp
         body = request.get_json(silent=True)
         if body:
-            pot = body["pot"]
-            with open("vars_log.txt", "w") as file:
-                file.write(str(pot))
+            with open('vars.json', 'w') as outfile:
+                json.dump(body, outfile)
             return "set"
         return "not set"
 
     def get(self):
         try:
-            with open("vars_log.txt") as file:
-                v = file.read()
-            if v: return v
-            else: return 0
+            with open("vars.json") as file:
+                data = json.load(file)
+            if data: return data
+            else: return dict()
         except:
             return 0
 

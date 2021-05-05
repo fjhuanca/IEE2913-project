@@ -8,7 +8,7 @@ function realTimeLineChart() {
     function chart(selection) {
       // Based on https://bl.ocks.org/mbostock/3884955
       selection.each(function(data) {
-        data = ["x", "y", "z"].map(function(c) {
+        data = ["Temperature", "Microphone", "Breath Sensor"].map(function(c) {
           return {
             label: c,
             values: data.map(function(d) {
@@ -57,9 +57,9 @@ function realTimeLineChart() {
   
         var legendEnter = gEnter.append("g")
           .attr("class", "legend")
-          .attr("transform", "translate(" + (width-margin.right-margin.left-75) + ",25)");
+          .attr("transform", "translate(" + (width-margin.right-margin.left-200) + ",25)");
         legendEnter.append("rect")
-          .attr("width", 50)
+          .attr("width", 150)
           .attr("height", 75)
           .attr("fill", "#ffffff")
           .attr("fill-opacity", 0.7);
