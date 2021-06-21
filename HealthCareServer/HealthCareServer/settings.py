@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-import django_heroku
+# import django_heroku
 from pathlib import Path
 import os
 import dj_database_url
@@ -171,4 +171,4 @@ LOGIN_REDIRECT_URL = '/'
 
 AUTH_USER_MODEL = 'user_manage.User'
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
