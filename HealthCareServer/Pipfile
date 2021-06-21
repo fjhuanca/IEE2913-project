@@ -4,11 +4,19 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+psycopg2-binary= "*"
 Django = "*"
 channels = "*"
 django-widget-tweaks = "*"
+dj-database-url = "*"
+whitenoise = {extras = ["brotli"], version = "*"}
+python-dotenv = "*"
+gunicorn = "*"
+django-heroku = "*"
+daphne = "*"
+psycopg2 = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.7"
+python_version = "3.7.5"

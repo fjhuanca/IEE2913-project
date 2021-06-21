@@ -2,6 +2,8 @@ from channels.routing import ProtocolTypeRouter, URLRouter
 from channels.auth import AuthMiddlewareStack
 from django.urls import path
 from esp_comm import consumer
+import django
+django.setup()
 
 websocket_urlPatter = [
     path('ws/polData/', consumer.DashConsumer.as_asgi()),
